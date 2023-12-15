@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ALLPRODUCT, ALLUSERS, LOGOUT, ONEPRODUCT, POSTPRODUCT } from "./ActionType";
+import { ALLPRODUCT, ALLUSERS, GETCURRENT, LOGIN, LOGOUT, ONEPRODUCT, POSTPRODUCT } from "./ActionType";
 export const Get = () => async (dispatch) => {
     try {
       const res = await axios
@@ -66,7 +66,7 @@ export const AddUser = (data,navigate)=> async(dispatch)=>{
     const res = await axios
       .post("http://localhost:5668/users/post/",data)
       .then((res)=>dispatch(GetUsers()))
-      navigate('/user/login')
+      navigate('/')
   } catch (error) {
     console.log(error);
   }
@@ -75,7 +75,8 @@ export const findUser = (data)=> async(dispatch)=>{
   try {
     const res= await axios
       .post("http://localhost:5668/users/login",data)
-      .then((res)=>dispatch(GetUsers()))
+      .then((res)=>dispatch({type:LOGIN,payload:res.data}))
+      console.log(res)
   } catch (error) {
     console.log(error);
   }
@@ -109,9 +110,23 @@ export const deletUser = (id)=> async(dispatch)=>{
     console.log(error)
   }
 } 
-export const logout = (navigate)=>{
-  localStorage.removeItem('tokenuser')
-  navigate('/login')
+
+export const getcurrent=()=>async(dispatch)=>{
+  const config={
+      headers:{token:localStorage.getItem("token")}
+  }
+  try {
+     const res=await axios.get("http://localhost:5668/users/getcurrent",config) 
+.then(res=>dispatch({type:GETCURRENT,payload:res.data}))
+  } catch (error) {
+      console.log(error)
+  }
+}
+
+
+export const logout = ()=>{
+  localStorage.removeItem('token')
+  
   return{
     type:LOGOUT
   }

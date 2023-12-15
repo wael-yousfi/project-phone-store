@@ -1,10 +1,11 @@
-import { ALLPRODUCT, ALLUSERS, LOGOUT, ONEPRODUCT, POSTPRODUCT } from "./ActionType"
+import { ALLPRODUCT, ALLUSERS, GETCURRENT, LOGIN, LOGOUT, ONEPRODUCT, POSTPRODUCT } from "./ActionType"
 
 const initialState = {
     products: [],
     product:{},
     users:[],
-    basket: []
+    basket: [],
+    user:{}
 }
 
 export const products_reducer = (state = initialState, { type, payload }) => {
@@ -28,8 +29,13 @@ export const users_reducer = (state = initialState, { type, payload }) => {
 
         case ALLUSERS:
             return { ...state, users: payload }
+        case LOGIN:
+            localStorage.setItem('token',payload.token)
+            return{...state, user: payload.user}    
         case LOGOUT:
-            return{...state, users: {}} 
+            return{...state, user: {}}
+        case GETCURRENT:
+            return{...state, user: payload}     
         default:
             return state
     }

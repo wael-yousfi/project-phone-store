@@ -15,7 +15,7 @@ function ListUsers() {
   return (
     <>
     <div style={{ display: "flex", gap: "20px", flexWrap: "nowrap" ,justifyContent: "space-around"}}>
-      {usersFromState.map((e) => (
+      {usersFromState?.map((e) => (
     
         <div className="container d-flex justify-content-center mt-5">
     <div className="card">

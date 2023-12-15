@@ -3,6 +3,7 @@ const { RegisterUser, getUser, LoginUser, UpdateUser, DeleteUser, UpdateUser2} =
 const { registervalidation, validation, loginvalidation } = require("../middleware/Validation")
 const { sendEmail } = require("../Controllers/Nodemailer")
 const { sendEmailAdmin } = require("../Controllers/Nodemaileradmin")
+const { Isauth } = require("../middleware/isauth")
  
 var userRouter = express.Router()
 
@@ -14,4 +15,7 @@ userRouter.put("/update/:id",UpdateUser)
 userRouter.delete("/delete/:id",DeleteUser)
 userRouter.post("/sendemail",sendEmail)
 userRouter.post('/sendEmailAdmin',sendEmailAdmin)
+userRouter.get("/getcurrent",Isauth,(req,res)=>{
+    res.send(req.user)
+})
 module.exports = userRouter

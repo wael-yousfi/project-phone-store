@@ -94,10 +94,7 @@ exports.LoginUser = async (req, res) => {
       userExists.password
     ))
   ) {
-    res.status(200).json({
-      _id: userExists.id,
-      name: userExists.name,
-      email: userExists.email,
+    res.status(200).json({user:userExists,
       token: generateToken(userExists.id),
     });
   } else {

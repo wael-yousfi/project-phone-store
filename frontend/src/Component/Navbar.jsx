@@ -2,7 +2,8 @@ import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
-import { GetUsers, logout } from './Redux/Action';
+import { GetUsers, getcurrent, logout } from './Redux/Action';
+
   
  
 const Navbar = () => {
@@ -11,9 +12,9 @@ const Navbar = () => {
   const basket = useSelector(state=>state.products.basket)
  useEffect(()=>{
   //getcurrent
-  dispatch(GetUsers()) 
+  dispatch(getcurrent()) 
  },[])
- const user= useSelector(state=>state.users.users)
+ const user= useSelector(state=>state.users.user)
    console.log(user)
 
   return (<>
@@ -46,7 +47,7 @@ const Navbar = () => {
                      {basket.length}
                   </Link>
                 </li>
-                <li className="nav-item">
+                {!user.name?<><li className="nav-item">
                   <Link className="nav-link" to={'/users'}>
                       Register
                   </Link>
@@ -55,12 +56,12 @@ const Navbar = () => {
                   <Link className="nav-link" to={'/user/login'}>
                       Login
                   </Link>
-                  </li>
-                  <li className="nav-item">
-                  <Link className="nav-link" onClick={()=>dispatch(logout(navigate))}>
+                  </li></>:null}
+                 {user.name? <li className="nav-item">
+                  <Link className="nav-link" to={'/user/login'} onClick={()=>dispatch(logout())}>
                       Logout
                   </Link>
-                </li>
+                </li>:null} 
                 <li className="nav-item">
                   <Link className="nav-link" to={'/users/get'}>
                       List of users
@@ -71,6 +72,8 @@ const Navbar = () => {
                       contact
                   </Link>
                 </li>
+
+                
             
           
           </ul>

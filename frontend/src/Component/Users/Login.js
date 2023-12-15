@@ -19,7 +19,7 @@ function Login() {
     }
     const navigate = useNavigate()
     const Log_user = async () => {
-        dispatch(findUser(formData), navigate('/users/get'))
+        dispatch(findUser(formData), navigate('/'))
     }
 
 

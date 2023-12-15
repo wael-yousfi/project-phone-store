@@ -11,7 +11,7 @@ function Contact() {
         .then((res)=>alert(res.data.message))
   }
   return (
-    <>
+    <div className='ggg'>
         <div className="background">
   <div className="container">
     <div className="screen">
@@ -33,7 +33,7 @@ function Contact() {
             <span>CONTACT</span>
             <span>US</span>
           </div>
-          <div className="app-contact">CONTACT INFO : +62 81 314 928 595</div>
+          <div style={{fontSize:'15px'}} className="app-contact">CONTACT INFO :<br/>  +216 29  561  312</div>
         </div>
         <div className="screen-body-item">
           <div className="app-form">
@@ -90,7 +90,7 @@ function Contact() {
   </div>
 </div>
 
-    </>
+    </div>
   )
 }
 
