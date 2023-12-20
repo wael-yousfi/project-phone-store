@@ -20,7 +20,7 @@ const Navbar = () => {
   return (<>
     <nav style={{background:'white'  }} className="navbar navbar-expand-lg navbar-light p-3 border-bottom">
       <div className="container">
-        <Link style={{color:'red', marginRight:'300px',fontSize:'1.5rem'}} to="/" className="navbar-brand">
+        <Link style={{color:'red', marginRight:'600px',fontSize:'1.5rem'}} to="/" className="navbar-brand">
           PHONE STORE
         </Link>
         <button
@@ -36,40 +36,48 @@ const Navbar = () => {
           <span className="navbar-toggler-icon"></span>
         </button>
 
-        <div  className="collapse navbar-collapse" id="navbarNav" >
+        <div style={{gap:'10px',fontSize:'1rem',color:'blue'}}  className="collapse navbar-collapse" id="navbarNav" >
           <ul className="navbar-nav ms-auto">
             
            
             
                 <li className="nav-item">
-                  <Link className="nav-link" to={'/basket'}>
+                  <Link style={{color:'blue'}} className="nav-link" to={'/basket'}>
                      Basket
                      {basket.length}
                   </Link>
                 </li>
                 {!user.name?<><li className="nav-item">
-                  <Link className="nav-link" to={'/users'}>
+                  <Link style={{color:'blue'}} className="nav-link" to={'/users'}>
                       Register
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to={'/user/login'}>
+                  <Link style={{color:'blue'}} className="nav-link" to={'/user/login'}>
                       Login
                   </Link>
                   </li></>:null}
                  {user.name? <li className="nav-item">
-                  <Link className="nav-link" to={'/user/login'} onClick={()=>dispatch(logout())}>
+                  <Link style={{color:'blue'}} className="nav-link" to={'/user/login'} onClick={()=>dispatch(logout())}>
                       Logout
                   </Link>
                 </li>:null} 
+                {user.isAdmin && user.name?
                 <li className="nav-item">
-                  <Link className="nav-link" to={'/users/get'}>
+                  <Link style={{color:'blue'}} className="nav-link" to={'/users/get'}>
                       List of users
+
                   </Link>
-                </li>
+                </li>:null}
+                {!user.isAdmin && user.name?
+                <li className="nav-item">
+                <Link style={{color:'blue'}} className="nav-link" to={'/users/get'}>
+                  Profile
+                </Link>
+              </li>:null}
                 <li className="nav-item">
                   <Link className="nav-link" to={'/contact'}>
-                      contact
+                      
                   </Link>
                 </li>
 

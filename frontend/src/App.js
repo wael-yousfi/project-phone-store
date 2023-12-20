@@ -12,6 +12,9 @@ import Basket from './Component/Product/Basket';
 import Cancel from './Component/Product/cancel';
 import Success from './Component/Product/success';
 import Contact from './Component/Users/Contact';
+import CarouselFadeExample from './Component/Product/Carousel';
+import { Carousel } from 'bootstrap';
+
 function App() {
 
 
@@ -19,10 +22,12 @@ function App() {
     <div style={{background:'white'}}>
       <Navbar/>
       
-       
+      
+      
 
       <Routes>
         <Route path='/' element={<Get_product />} />
+        
         <Route path='/detail/:id' element={<Detail_product />} />
         <Route path='/basket/' element={<Basket />} />
         <Route path='/users' element={<Register_user />} />
@@ -30,10 +35,11 @@ function App() {
         <Route path='users/get' element={<ListUsers />} />
         <Route path='/success' element={<Success />} />
         <Route path='/cancel' element={<Cancel />} />
-        <Route path='/contact' element={<Contact />} />
+         
 
 
       </Routes>
+    
     </div>
   )
 }

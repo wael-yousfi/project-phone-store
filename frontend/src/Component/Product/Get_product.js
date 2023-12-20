@@ -12,6 +12,7 @@ import Add_product from './Add_product';
 import { addToBasket } from '../Redux/ActionBasket';
 import './Product.css'
 import Contact from '../Users/Contact';
+import CarouselFadeExample from './Carousel';
 function Get_product() {
   const [quantity, setQuantity] = useState(0)
   const dispatch = useDispatch()
@@ -26,16 +27,17 @@ function Get_product() {
   console.log(user)
   return (
     <>
+    <CarouselFadeExample/>
       {user.isAdmin?<Add_product />:null}
     <div style={{ display: "flex", gap: "20px", flexWrap: "wrap" ,justifyContent: "space-around"}}>
       {products.map((e) => 
         
-        <Card key={e._id} style={{ width: "18rem", height: "600px",position:'relative' }}>
+        <Card key={e._id} style={{ width: "18rem", height: "800px",position:'relative' }}>
         
-        <Card.Img  variant="top" src={e.image}  style={{width:"50%",marginLeft:'40px'}}/>
+        <Card.Img  variant="top" src={e.image}  style={{width:"70%",marginLeft:'60'}}/>
         <Card.Body>
           <Card.Title style={{fontSize:"0.8rem",color:'blue'}}>{e.name}</Card.Title>
-          <Accordion defaultActiveKey="1" flush style={{height:'150px',overflow:'scroll',WebkitScrollSnapType:"block"}}>
+          <Accordion defaultActiveKey="1" flush style={{height:'300px',width:'230px',overflow:'scroll',WebkitScrollSnapType:"block"}}>
       <Accordion.Item eventKey="1">
         <Accordion.Header>Description</Accordion.Header>
         <Accordion.Body style={{height:'100px',}}>
@@ -43,6 +45,7 @@ function Get_product() {
         </Accordion.Body>
       </Accordion.Item>
     </Accordion>
+  
         
         </Card.Body>
         <Card.Footer style={{fontSize:'30px', }}>

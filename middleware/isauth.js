@@ -9,7 +9,7 @@ exports.Isauth=async(req,res,next)=>{
            res.status(400).send({msg:"you are not authorized"})
        }
 
-       const user=await users.findById(decode.id)
+       const user=await users.findById(decode.id) 
        req.user=user
        next()
 
