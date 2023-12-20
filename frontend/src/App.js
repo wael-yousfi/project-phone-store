@@ -14,6 +14,7 @@ import Success from './Component/Product/success';
 import Contact from './Component/Users/Contact';
 import CarouselFadeExample from './Component/Product/Carousel';
 import { Carousel } from 'bootstrap';
+import Profile from './Component/Users/Profile';
 
 function App() {
 
@@ -35,7 +36,7 @@ function App() {
         <Route path='users/get' element={<ListUsers />} />
         <Route path='/success' element={<Success />} />
         <Route path='/cancel' element={<Cancel />} />
-         
+        <Route path='/profile' element={<Profile />} />
 
 
       </Routes>

@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { GetUsers, getcurrent, logout } from './Redux/Action';
+import { SlBasket } from "react-icons/sl";
 
   
  
@@ -20,7 +21,7 @@ const Navbar = () => {
   return (<>
     <nav style={{background:'white'  }} className="navbar navbar-expand-lg navbar-light p-3 border-bottom">
       <div className="container">
-        <Link style={{color:'red', marginRight:'600px',fontSize:'1.5rem'}} to="/" className="navbar-brand">
+        <Link style={{color:'red', marginRight:'700px',fontSize:'2rem',textDecorationLine:'underline'}} to="/" className="navbar-brand">
           PHONE STORE
         </Link>
         <button
@@ -36,17 +37,17 @@ const Navbar = () => {
           <span className="navbar-toggler-icon"></span>
         </button>
 
-        <div style={{gap:'10px',fontSize:'1rem',color:'blue'}}  className="collapse navbar-collapse" id="navbarNav" >
-          <ul className="navbar-nav ms-auto">
+        <div style={{gap:'50px',fontSize:'1rem',color:'blue'}}  className="collapse navbar-collapse" id="navbarNav" >
+          <ul style={{textDecorationLine:'underline'}} className="navbar-nav ms-auto">
             
            
-            
+          {!user.isAdmin && user.name?
                 <li className="nav-item">
-                  <Link style={{color:'blue'}} className="nav-link" to={'/basket'}>
-                     Basket
+                  <Link style={{color:'blue',width:'50px'}} className="nav-link" to={'/basket'}>
+                     <SlBasket />
                      {basket.length}
                   </Link>
-                </li>
+                </li>:null}
                 {!user.name?<><li className="nav-item">
                   <Link style={{color:'blue'}} className="nav-link" to={'/users'}>
                       Register
@@ -65,13 +66,13 @@ const Navbar = () => {
                 {user.isAdmin && user.name?
                 <li className="nav-item">
                   <Link style={{color:'blue'}} className="nav-link" to={'/users/get'}>
-                      List of users
+                      users
 
                   </Link>
                 </li>:null}
                 {!user.isAdmin && user.name?
                 <li className="nav-item">
-                <Link style={{color:'blue'}} className="nav-link" to={'/users/get'}>
+                <Link style={{color:'blue'}} className="nav-link" to={'/profile'}>
                   Profile
                 </Link>
               </li>:null}
