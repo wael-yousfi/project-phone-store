@@ -34,6 +34,7 @@ function Basket() {
         ,0 )
         
         }
+         DT
     </h1>
     
     <div data-tooltip="Price:-$20" className="buttonbuy"  onClick={paiement}>

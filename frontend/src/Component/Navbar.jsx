@@ -41,13 +41,7 @@ const Navbar = () => {
           <ul style={{textDecorationLine:'underline'}} className="navbar-nav ms-auto">
             
            
-          {!user.isAdmin && user.name?
-                <li className="nav-item">
-                  <Link style={{color:'blue',width:'50px'}} className="nav-link" to={'/basket'}>
-                     <SlBasket />
-                     {basket.length}
-                  </Link>
-                </li>:null}
+         
                 {!user.name?<><li className="nav-item">
                   <Link style={{color:'blue'}} className="nav-link" to={'/users'}>
                       Register
@@ -76,6 +70,15 @@ const Navbar = () => {
                   Profile
                 </Link>
               </li>:null}
+
+              {!user.isAdmin && user.name?
+                <li className="nav-item">
+                  <Link style={{color:'blue',width:'50px'}} className="nav-link" to={'/basket'}>
+                     <SlBasket />
+                     {basket.length}
+                  </Link>
+                </li>:null}
+
                 <li className="nav-item">
                   <Link className="nav-link" to={'/contact'}>
                       
